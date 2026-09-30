@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+:root {
+  --primary-blue: #2563eb;
+  --primary-hover: #1d4ed8;
+  --dark-header: #1e293b;
+  --body-text: #334155;
+  --border-color: #cbd5e1;
+  --card-bg: rgba(255, 255, 255, 0.97);
+  --success-color: #16a34a;
+  --success-bg: #f0fdf4;
+  --danger-color: #dc2626;
+  --danger-hover: #b91c1c;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--body-text);
+  min-height: 100vh;
+  background: url('/static/images/gym-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navigation Bar */
+.navbar {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  padding: 12px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--dark-header);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-links a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+/* Center Layout Containers */
+.main-layout {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.content-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 16px;
+}
+
+/* Cards */
+.form-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+  padding: 36px 40px;
+  margin: auto;
+}
+
+.plan-card {
+  background: var(--card-bg);
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+  padding: 40px;
+}
+
+.admin-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 1240px;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+  padding: 35px;
+  margin: 20px auto;
+}
+
+/* Typography */
+.card-title {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--dark-header);
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--dark-header);
+  text-align: center;
+  margin: 28px 0 14px;
+}
+
+.sub-title {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--dark-header);
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--dark-header);
+  margin-bottom: 6px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 11px 14px;
+  font-size: 0.98rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #1e293b;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+
+.form-control:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+select.form-control {
+  appearance: auto;
+  cursor: pointer;
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* Buttons */
+.btn-primary {
+  width: 100%;
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 13px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  margin-top: 8px;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-primary:active {
+  transform: scale(0.99);
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-danger:hover {
+  background-color: var(--danger-hover);
+}
+
+/* User Info Box */
+.user-info-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 15px 0 25px;
+}
+
+.user-info-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px 20px;
+  list-style: none;
+}
+
+.user-info-item {
+  font-size: 0.98rem;
+  color: #334155;
+}
+
+.user-info-item strong {
+  color: #0f172a;
+}
+
+/* Workout Plan & Content Boxes */
+.plan-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 24px;
+  font-family: inherit;
+  font-size: 0.93rem;
+  line-height: 1.7;
+  color: #1e293b;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 600px;
+  overflow-y: auto;
+  text-align: left;
+  margin: 15px 0 25px;
+}
+
+.tip-box {
+  background: #eff6ff;
+  border-left: 4px solid var(--primary-blue);
+  padding: 18px 22px;
+  border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #1e3a8a;
+  margin: 15px 0 25px;
+  text-align: left;
+}
+
+.alert-success {
+  background-color: var(--success-bg);
+  border: 1px solid #bbf7d0;
+  color: var(--success-color);
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 14px 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Admin Table */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.admin-table th {
+  background-color: #1e88e5;
+  color: #ffffff;
+  padding: 13px 15px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.admin-table td {
+  padding: 12px 14px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.92rem;
+  color: #334155;
+  vertical-align: top;
+  background-color: #ffffff;
+}
+
+.admin-table tbody tr:hover td {
+  background-color: #f8fafc;
+}
+
+.table-plan-pre {
+  background: #f8fafc;
+  padding: 10px;
+  border-radius: 6px;
+  max-width: 380px;
+  max-height: 220px;
+  overflow-y: auto;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .form-card, .plan-card, .admin-card {
+    padding: 24px 20px;
+  }
+  .card-title {
+    font-size: 1.4rem;
+  }
+  .section-title {
+    font-size: 1.25rem;
+  }
+  .user-info-list {
+    grid-template-columns: 1fr;
+  }
+}

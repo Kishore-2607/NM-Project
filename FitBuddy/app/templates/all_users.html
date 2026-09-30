@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitBuddy - All Users & Workout Plans</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <a class="nav-brand" href="/">💪 FitBuddy</a>
+        <div class="nav-links">
+            <a href="/">← Generator / Home</a>
+        </div>
+    </header>
+
+    <div class="content-container" style="max-width: 1300px;">
+        <div class="admin-card">
+            <h1 class="card-title">📋 FitBuddy - All Users & Workout Plans</h1>
+
+            {% if users and users|length > 0 %}
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Weight (kg)</th>
+                            <th>Goal</th>
+                            <th>Intensity</th>
+                            <th>Original Plan</th>
+                            <th>Updated Plan</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td><strong>{{ user.id }}</strong></td>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.age }}</td>
+                            <td>{{ user.weight }}</td>
+                            <td>{{ user.goal }}</td>
+                            <td>{{ user.intensity }}</td>
+                            <td>
+                                <pre class="table-plan-pre">{{ user.original_plan }}</pre>
+                            </td>
+                            <td>
+                                <pre class="table-plan-pre">{{ user.updated_plan }}</pre>
+                            </td>
+                            <td>
+                                <form action="/delete-user/{{ user.id or user.user_id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                    <button type="submit" class="btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div style="text-align: center; padding: 40px; color: #64748b; font-size: 1.1rem;">
+                No registered users or plans found yet. Go back to <a href="/" style="color: #2563eb; font-weight: 600;">Home</a> to generate one!
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

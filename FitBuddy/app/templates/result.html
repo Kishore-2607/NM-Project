@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Personalized Workout Plan - FitBuddy</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <a class="nav-brand" href="/">💪 FitBuddy</a>
+        <div class="nav-links">
+            <a href="/">← New Plan</a>
+            <a href="/view-all-users">📋 Admin Dashboard</a>
+        </div>
+    </header>
+
+    <div class="content-container">
+        <div class="plan-card">
+            <h1 class="card-title">🏋️ Your Personalized Workout Plan</h1>
+
+            <h2 class="sub-title">User Information</h2>
+            <div class="user-info-box">
+                <ul class="user-info-list">
+                    <li class="user-info-item"><strong>Name:</strong> {{ username or name }}</li>
+                    <li class="user-info-item"><strong>User ID:</strong> {{ user_id }}</li>
+                    <li class="user-info-item"><strong>Age:</strong> {{ age }}</li>
+                    <li class="user-info-item"><strong>Weight:</strong> {{ weight }} kg</li>
+                    <li class="user-info-item"><strong>Goal:</strong> {{ goal }}</li>
+                    <li class="user-info-item"><strong>Intensity:</strong> {{ intensity }}</li>
+                </ul>
+            </div>
+
+            {% if success_message or plan_updated %}
+            <div class="alert-success">
+                ✅ Your plan has been updated based on your feedback!
+            </div>
+            {% endif %}
+
+            {% if updated_plan %}
+            <h2 class="section-title">Updated Workout Plan</h2>
+            {% if feedback %}
+            <p style="text-align: center; color: #64748b; margin-bottom: 8px;"><em>Based on feedback: "{{ feedback }}"</em></p>
+            {% endif %}
+            <pre class="plan-box">{{ updated_plan }}</pre>
+            {% endif %}
+
+            <h2 class="section-title">Workout Plan</h2>
+            <pre class="plan-box">{{ workout_plan }}</pre>
+
+            <h2 class="section-title">💡 Nutrition Tip</h2>
+            <div class="tip-box">
+                {{ nutrition_tip }}
+            </div>
+
+            <h2 class="section-title">📝 Share Your Feedback</h2>
+            <form action="/submit-feedback" method="POST">
+                <div class="form-group">
+                    <label for="feedback_user_id">Your Unique User ID:</label>
+                    <input type="text" id="feedback_user_id" name="user_id" class="form-control" value="{{ user_id }}" placeholder="Enter the same User ID used to generate your plan" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="feedback">Your Feedback:</label>
+                    <textarea id="feedback" name="feedback" class="form-control" rows="4" placeholder="Let us know how we can improve your plan..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
